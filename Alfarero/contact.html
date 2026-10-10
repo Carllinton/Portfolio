@@ -56,7 +56,7 @@
                 <h1>Get In Touch</h1>
                 <p>Send me a message and I'll respond as soon as possible!</p>
                 
-                <form class="form137" method="POST" action="send_mail.php">
+                <form class="form137" method="POST" action="https://formspree.io/f/xyezrrre">
                     <div>
                         <div class="form-group">
                             <label for="firstName">First Name</label>
@@ -89,36 +89,45 @@
         <p>&copy; 2026 Carl Alfarero. All rights reserved</p>
     </footer>
     <script>
-        (function () {
-            const params = new URLSearchParams(window.location.search);
-            const status = params.get('status');
-            if (!status) return;
-
-            const toast   = document.getElementById('toast');
-            const icon    = document.getElementById('toast-icon');
-            const msg     = document.getElementById('toast-msg');
-            const errText = params.get('msg');
-
-            if (status === 'success') {
-                toast.classList.add('toast--success');
-                icon.textContent = '✓';
-                msg.textContent  = 'Message sent! I'll get back to you soon.';
-            } else {
-                toast.classList.add('toast--error');
-                icon.textContent = '✕';
-                msg.textContent  = errText || 'Something went wrong. Please try again.';
+        const form  = document.querySelector('.form137');
+        const toast = document.getElementById('toast');
+        const icon  = document.getElementById('toast-icon');
+        const msg   = document.getElementById('toast-msg');
+        const btn   = form.querySelector('.submit-btn');
+    
+        function showToast(type, text) {
+            toast.classList.remove('toast--success', 'toast--error');
+            toast.classList.add(type === 'success' ? 'toast--success' : 'toast--error', 'toast--visible');
+            icon.textContent = type === 'success' ? '✓' : '✕';
+            msg.textContent = text;
+            setTimeout(() => toast.classList.remove('toast--visible'), 5000);
+        }
+    
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            btn.disabled = true;
+            btn.textContent = 'Sending...';
+    
+            try {
+                const res = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { 'Accept': 'application/json' }
+                });
+    
+                if (res.ok) {
+                    showToast('success', "Message sent! I'll get back to you soon.");
+                    form.reset();
+                } else {
+                    showToast('error', 'Something went wrong. Please try again.');
+                }
+            } catch (err) {
+                showToast('error', 'Network error. Please check your connection and try again.');
             }
-
-            toast.classList.add('toast--visible');
-
-            // Auto-dismiss after 5 s
-            setTimeout(function () {
-                toast.classList.remove('toast--visible');
-            }, 5000);
-
-            // Clean URL so refreshing doesn't re-show toast
-            window.history.replaceState({}, '', 'contact.html');
-        })();
+    
+            btn.disabled = false;
+            btn.textContent = 'Send Message';
+        });
     </script>
 </body>
 </html>
