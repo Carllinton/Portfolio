@@ -101,26 +101,6 @@
     {
       "source": "/api/certificates.html",
       "destination": "/api/certificates.php"
-    },
-    {
-      "source": "/css/:path*",
-      "destination": "/api/css/:path*"
-    },
-    {
-      "source": "/images/:path*",
-      "destination": "/api/images/:path*"
-    },
-    {
-      "source": "/certificate/:path*",
-      "destination": "/api/certificate/:path*"
-    },
-    {
-      "source": "/videos/:path*",
-      "destination": "/api/videos/:path*"
-    },
-    {
-      "source": "/works/:path*",
-      "destination": "/api/works/:path*"
     }
   ]
 }
