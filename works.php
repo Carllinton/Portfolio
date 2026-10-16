@@ -11,12 +11,12 @@
     <header>
         <nav class="navbar">
             <div class="nav-container">
-                <a href="index.html"><img src="images/carl_logo.png" alt="Carl Alfarero Logo"></a>
+                <a href="index.php"><img src="images/carl_logo.png" alt="Carl Alfarero Logo"></a>
                 <div class="nav-menu">
-                    <a href="index.html">Home</a>
-                    <a href="about.html">About</a>
-                    <a href="works.html">Works</a>
-                    <a href="contact.html">Contact</a>
+                    <a href="index.php">Home</a>
+                    <a href="about.php">About</a>
+                    <a href="works.php">Works</a>
+                    <a href="contact.php">Contact</a>
                 </div>
             </div>
         </nav>
@@ -30,7 +30,7 @@
         <section class="works-section">
             <div class="main-body">
                 <div class="grid-container">
-                    <a href="networking.html" class="item-link">
+                    <a href="networking.php" class="item-link">
                         <div class="item">
                             <div class="item-card">
                                 <div class="item-icon">
@@ -41,7 +41,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="multimedia.html" class="item-link">
+                    <a href="multimedia.php" class="item-link">
                         <div class="item">
                             <div class="item-card">
                                 <div class="item-icon">
@@ -52,7 +52,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="web-development.html" class="item-link">
+                    <a href="web-development.php" class="item-link">
                         <div class="item">
                             <div class="item-card">
                                 <div class="item-icon">
@@ -62,7 +62,7 @@
                                 <p class="item-description">Crafting intuitive and performant web applications</p>
                             </div>
                         </div>
-                    <a href="certificates.html" class="item-link">
+                    <a href="certificates.php" class="item-link">
                         <div class="item">
                             <div class="item-card">
                                 <div class="item-icon">

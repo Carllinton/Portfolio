@@ -12,12 +12,12 @@
     <header>
         <nav class="navbar">
             <div class="nav-container">
-                <a href="index.html"><img src="images/carl_logo.png" alt="Carl Alfarero Logo"></a>
+                <a href="index.php"><img src="images/carl_logo.png" alt="Carl Alfarero Logo"></a>
                 <div class="nav-menu">
-                    <a href="index.html">Home</a>
-                    <a href="about.html">About</a>
-                    <a href="works.html">Works</a>
-                    <a href="contact.html">Contact</a>
+                    <a href="index.php">Home</a>
+                    <a href="about.php">About</a>
+                    <a href="works.php">Works</a>
+                    <a href="contact.php">Contact</a>
                 </div>
             </div>
         </nav>
@@ -34,7 +34,7 @@
                     <label for="modal-toggle" class="primary-btn">Demo Reel</label>
                 </div>
                 <div>
-                    <a href="contact.html" class="secondary-btn">Contact me</a>
+                    <a href="contact.php" class="secondary-btn">Contact me</a>
                 </div>
             </div>
         </section>
