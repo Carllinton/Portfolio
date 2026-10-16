@@ -1,0 +1,126 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "functions": {
+    "api/*.php": {
+      "runtime": "vercel-php@0.9.0"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/api/index.php"
+    },
+    {
+      "source": "/index.html",
+      "destination": "/api/index.php"
+    },
+    {
+      "source": "/about",
+      "destination": "/api/about.php"
+    },
+    {
+      "source": "/about.html",
+      "destination": "/api/about.php"
+    },
+    {
+      "source": "/works",
+      "destination": "/api/works.php"
+    },
+    {
+      "source": "/works.html",
+      "destination": "/api/works.php"
+    },
+    {
+      "source": "/contact",
+      "destination": "/api/contact.php"
+    },
+    {
+      "source": "/contact.html",
+      "destination": "/api/contact.php"
+    },
+    {
+      "source": "/networking",
+      "destination": "/api/networking.php"
+    },
+    {
+      "source": "/networking.html",
+      "destination": "/api/networking.php"
+    },
+    {
+      "source": "/multimedia",
+      "destination": "/api/multimedia.php"
+    },
+    {
+      "source": "/multimedia.html",
+      "destination": "/api/multimedia.php"
+    },
+    {
+      "source": "/web-development",
+      "destination": "/api/web-development.php"
+    },
+    {
+      "source": "/web-development.html",
+      "destination": "/api/web-development.php"
+    },
+    {
+      "source": "/certificates",
+      "destination": "/api/certificates.php"
+    },
+    {
+      "source": "/certificates.html",
+      "destination": "/api/certificates.php"
+    },
+    {
+      "source": "/api/index.html",
+      "destination": "/api/index.php"
+    },
+    {
+      "source": "/api/about.html",
+      "destination": "/api/about.php"
+    },
+    {
+      "source": "/api/works.html",
+      "destination": "/api/works.php"
+    },
+    {
+      "source": "/api/contact.html",
+      "destination": "/api/contact.php"
+    },
+    {
+      "source": "/api/networking.html",
+      "destination": "/api/networking.php"
+    },
+    {
+      "source": "/api/multimedia.html",
+      "destination": "/api/multimedia.php"
+    },
+    {
+      "source": "/api/web-development.html",
+      "destination": "/api/web-development.php"
+    },
+    {
+      "source": "/api/certificates.html",
+      "destination": "/api/certificates.php"
+    },
+    {
+      "source": "/css/:path*",
+      "destination": "/api/css/:path*"
+    },
+    {
+      "source": "/images/:path*",
+      "destination": "/api/images/:path*"
+    },
+    {
+      "source": "/certificate/:path*",
+      "destination": "/api/certificate/:path*"
+    },
+    {
+      "source": "/videos/:path*",
+      "destination": "/api/videos/:path*"
+    },
+    {
+      "source": "/works/:path*",
+      "destination": "/api/works/:path*"
+    }
+  ]
+}
