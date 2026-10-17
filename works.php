@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Works - Carl Alfarero</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=20261017-nav1">
     <link rel="shortcut icon" href="images/favicon/ca_logo.png" type="image/x-icon">
 </head>
 <body>
@@ -12,7 +12,10 @@
         <nav class="navbar">
             <div class="nav-container">
                 <a href="index.php"><img src="images/carl_logo.png" alt="Carl Alfarero Logo"></a>
-                <div class="nav-menu">
+                <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation">
+                    <span class="nav-toggle-icon" aria-hidden="true"></span>
+                </button>
+                <div class="nav-menu" id="primary-navigation">
                     <a href="index.php">Home</a>
                     <a href="about.php">About</a>
                     <a href="works.php">Works</a>
@@ -21,6 +24,7 @@
             </div>
         </nav>
     </header>
+    <script src="js/navigation.js?v=20261017-nav1"></script>
     <main>
         <section class="works-intro">
             <h1>My Works</h1>
