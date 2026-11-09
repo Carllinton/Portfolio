@@ -4,18 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Networking - Carl Alfarero</title>
-    <link rel="stylesheet" href="css/style.css?v=20261017-nav1">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="images/favicon/ca_logo.png" type="image/x-icon">
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="nav-container">
-                <a href="index.php"><img src="images/carl_logo.png" alt="Carl Alfarero Logo"></a>
-                <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation">
-                    <span class="nav-toggle-icon" aria-hidden="true"></span>
-                </button>
-                <div class="nav-menu" id="primary-navigation">
+                <a href="index.html"><img src="images/carl_logo.png" alt="Carl Alfarero Logo"></a>
+                <div class="nav-menu">
                     <a href="index.php">Home</a>
                     <a href="about.php">About</a>
                     <a href="works.php">Works</a>
@@ -24,7 +21,6 @@
             </div>
         </nav>
     </header>
-    <script src="js/navigation.js?v=20261017-nav1"></script>
 
     <main>
         <section class="works-intro">
@@ -80,12 +76,14 @@
                 <div class="work-section">
                     <h2 class="section-title">DHCP Relay Configuration</h2>
                     <div class="multimedia-gallery">
-                        <div class="gallery-item">
-                            <video class="gallery-video">
-                                <source src="works/networking/dhcp_relay/DHCPRelaySimulation.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-                            <div class="gallery-overlay">
+                        <div class="gallery-item gallery-video-item">
+                            <iframe
+                                class="gallery-video"
+                                src="https://drive.google.com/file/d/1P_4-F7lK5T7CvpyM3cRHqBwYDNNo3fWM/preview"
+                                title="DHCP Relay Simulation"
+                                allow="autoplay; encrypted-media; picture-in-picture; fullscreen">
+                            </iframe>
+                            <div class="gallery-overlay gallery-video-overlay" role="button" tabindex="0" aria-label="Watch DHCP Relay Simulation">
                                 <h3>DHCP Relay Simulation</h3>
                                 <p>DHCP relay network simulation and demonstration</p>
                             </div>
@@ -161,10 +159,12 @@
                     <h2 class="section-title">Physical Network Implementation</h2>
                     <div class="multimedia-gallery">
                         <div class="gallery-item">
-                            <video class="gallery-video">
-                                <source src="works/networking/Physical/PhysicalAct_Video Simulation.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
+                            <iframe
+                                class="gallery-video"
+                                src="https://drive.google.com/file/d/1Ek8qGTE9vQf5UPqMDF6_7X1HJ7_QgiaA/preview"
+                                title="DHCP Relay Simulation"
+                                allow="autoplay; encrypted-media; picture-in-picture; fullscreen">
+                            </iframe>
                             <div class="gallery-overlay">
                                 <h3>Physical Network Simulation</h3>
                                 <p>Physical network implementation and testing</p>
@@ -174,7 +174,7 @@
                 </div>
 
                 <div class="back-button">
-                    <a href="works.php" class="btn-back">← Back to Works</a>
+                    <a href="works.html" class="btn-back">← Back to Works</a>
                 </div>
             </div>
         </section>
@@ -186,11 +186,12 @@
 
 
 <!-- Lightbox -->
-<div id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Gallery viewer">
   <button id="lb-close" aria-label="Close">&times;</button>
   <button id="lb-prev" aria-label="Previous image">&#8249;</button>
   <button id="lb-next" aria-label="Next image">&#8250;</button>
   <img id="lb-img" src="" alt="">
+  <iframe id="lb-video" title="DHCP Relay Simulation" allow="autoplay; encrypted-media; picture-in-picture; fullscreen"></iframe>
   <p id="lb-caption"></p>
   <p id="lb-counter"></p>
 </div>
@@ -199,22 +200,34 @@
 (function () {
   var lb       = document.getElementById("lightbox");
   var lbImg    = document.getElementById("lb-img");
+  var lbVideo  = document.getElementById("lb-video");
   var lbCap    = document.getElementById("lb-caption");
   var lbCtr    = document.getElementById("lb-counter");
   var btnClose = document.getElementById("lb-close");
   var btnPrev  = document.getElementById("lb-prev");
   var btnNext  = document.getElementById("lb-next");
 
-  var items   = Array.from(document.querySelectorAll(".gallery-item img"));
+  var items   = Array.from(document.querySelectorAll(".gallery-item img, .gallery-item iframe.gallery-video"));
   var current = 0;
 
   function open(idx) {
     current = idx;
-    var img = items[idx];
-    lbImg.src = img.src;
-    lbImg.alt = img.alt;
-    var overlay = img.closest(".gallery-item").querySelector(".gallery-overlay h3");
-    lbCap.textContent = overlay ? overlay.textContent : img.alt;
+    var item = items[idx];
+    var card = item.closest(".gallery-item");
+    var overlay = card.querySelector(".gallery-overlay h3");
+    var isVideo = item.tagName === "IFRAME";
+
+    lbImg.style.display = isVideo ? "none" : "block";
+    lbVideo.style.display = isVideo ? "block" : "none";
+    if (isVideo) {
+      lbVideo.src = item.src;
+    } else {
+      lbVideo.removeAttribute("src");
+      lbImg.src = item.src;
+      lbImg.alt = item.alt;
+    }
+
+    lbCap.textContent = overlay ? overlay.textContent : (item.alt || item.title);
     lbCtr.textContent = (idx + 1) + " / " + items.length;
     lb.style.display  = "flex";
     document.body.style.overflow = "hidden";
@@ -222,6 +235,7 @@
 
   function close() {
     lb.style.display = "none";
+    lbVideo.removeAttribute("src");
     document.body.style.overflow = "";
   }
 
@@ -229,8 +243,25 @@
   function next() { open((current + 1) % items.length); }
 
   items.forEach(function (img, idx) {
-    img.style.cursor = "zoom-in";
-    img.addEventListener("click", function () { open(idx); });
+    if (img.tagName === "IMG") {
+      img.style.cursor = "zoom-in";
+      img.addEventListener("click", function () { open(idx); });
+    }
+  });
+
+  document.querySelectorAll(".gallery-video-overlay").forEach(function (overlay) {
+    function openVideo() {
+      var video = overlay.closest(".gallery-item").querySelector("iframe.gallery-video");
+      open(items.indexOf(video));
+    }
+
+    overlay.addEventListener("click", openVideo);
+    overlay.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openVideo();
+      }
+    });
   });
 
   btnClose.addEventListener("click", close);
