@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carl Alfarero - Portfolio</title>
-    <link rel="stylesheet" href="css/style.css?v=20261017-nav1">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="images/favicon/ca_logo.png" type="image/x-icon">
 </head>
 <body>
@@ -12,11 +12,8 @@
     <header>
         <nav class="navbar">
             <div class="nav-container">
-                <a href="index.php"><img src="images/carl_logo.png" alt="Carl Alfarero Logo"></a>
-                <button class="nav-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation">
-                    <span class="nav-toggle-icon" aria-hidden="true"></span>
-                </button>
-                <div class="nav-menu" id="primary-navigation">
+                <a href="index.html"><img src="images/carl_logo.png" alt="Carl Alfarero Logo"></a>
+                <div class="nav-menu">
                     <a href="index.php">Home</a>
                     <a href="about.php">About</a>
                     <a href="works.php">Works</a>
@@ -37,18 +34,26 @@
                     <label for="modal-toggle" class="primary-btn">Demo Reel</label>
                 </div>
                 <div>
-                    <a href="contact.php" class="secondary-btn">Contact me</a>
+                    <a href="contact.html" class="secondary-btn">Contact me</a>
                 </div>
             </div>
         </section>
     </main>
     <label for="modal-toggle" class="modal">
-        <video src="./videos/carl_demo_intro.mp4" controls class="modal-video"></video>
+        <iframe src="https://drive.google.com/file/d/1MR43BQYTN1TcBllEPHWyQ28aRCAIBY_D/preview" width=100" height="80%" class="modal-video"></iframe>
     </label>
     <footer>
         <p>&copy; 2026 Carl Alfarero. All rights reserved</p>
     </footer>
-    <script src="js/navigation.js?v=20261017-nav1"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('.modal video');
+            
+            video.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+        });
+    </script>
 
     <!-- View Resume Button -->
     <a href="certificate/Carl_Alfarero_Resume.pdf" target="_blank" title="View Resume" class="resume-btn">
